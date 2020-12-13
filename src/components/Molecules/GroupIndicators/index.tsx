@@ -88,7 +88,7 @@ export const GroupIndicators: React.FC<GroupIndicatorsProps> = observer(({ data,
 			<WrapIcon>
 				<Svg name={item?.data?.name} style={{width: 32, height: 40}} />
 				<Text fSize="20px" style={{ opacity: 0.8, width: 44, textAlign: 'center', marginLeft: 4 }} color={colorText}>
-					{`${item?.data?.curency.toFixed(2)} ${item?.data?.symbol}`}
+					{`${item?.data?.curency.toFixed(1)} ${item?.data?.symbol}`}
 				</Text>
 			</WrapIcon>
 			<Text fSize="14px" style={{ opacity: 0.8, letterSpacing: '0.02em' }} >

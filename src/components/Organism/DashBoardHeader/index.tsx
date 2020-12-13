@@ -7,7 +7,7 @@ import { CommonIndicator } from '../../Atoms/CommonIndicator'
 import envIndic from '../../../Store/DashBoard/'
 const Wrap = styled.div`
 	display: flex;
-	
+	justify-content: space-between;
 `
 const Line = styled.div<{ palette: string;}>`
 	width: 2px;
@@ -37,9 +37,8 @@ export const DashBoardHeader: React.FC<DashBoardHeaderProps> = observer(({ palet
 	const count = 89;
 	return (
 		<Wrap>
-			{
-				envIndic.environmentIndic && 
-				<WrapElement palette={palette} width="45%" style={{marginRight: 20}}>
+			{ envIndic.environmentIndic && 
+				<WrapElement palette={palette} width="45%" >
 					<CommonIndicator palette={palette} count={count}/>
 					<Line palette={palette}/>
 					<GroupIndicators
@@ -49,13 +48,24 @@ export const DashBoardHeader: React.FC<DashBoardHeaderProps> = observer(({ palet
 					/>
 				</WrapElement>
 			}
+			{ envIndic.soilIndic && 
 			<WrapElement palette={palette} width="23%">
 				<GroupIndicators
 					palette={palette}
-					data={dataSoil}
-					titleId="enviromentIndicatorTitle"
+					data={JSON.parse(envIndic?.soilIndic)}
+					titleId="soilIndicatorTitle"
 				/>
 			</WrapElement>
+			}
+			{ envIndic.waterIndic &&
+				<WrapElement palette={palette} width="30%">
+					<GroupIndicators
+						palette={palette}
+						data={JSON.parse(envIndic?.waterIndic)}
+						titleId="waterIndicatorTitle"
+					/>
+				</WrapElement>
+			}
 		</Wrap>
 	)
 });
